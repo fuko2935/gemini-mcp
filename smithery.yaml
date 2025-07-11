@@ -1,0 +1,13 @@
+version: 1
+start:
+  command: ["python", "-m", "uvicorn", "gemini_mcp_server.mcp_server:app", "--host", "0.0.0.0", "--port", "8000"]
+  port: 8000
+
+configSchema:
+  type: object
+  required:
+    - geminiApiKey
+  properties:
+    geminiApiKey:
+      type: string
+      description: Gemini AI API anahtarı
