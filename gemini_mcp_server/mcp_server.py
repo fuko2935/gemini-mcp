@@ -70,6 +70,11 @@ class GenerateResponse(BaseModel):
     response: str
     status: str = "success"
 
+# Health check endpoint
+@app.get("/health")
+async def health_check():
+    return {"status": "healthy", "service": "gemini-mcp-server"}
+
 @app.post("/generate", response_model=GenerateResponse)
 async def generate(request: GenerateRequest, api_key: str = Depends(verify_api_key)):
     try:
